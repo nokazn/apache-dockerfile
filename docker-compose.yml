@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  apache:
+    build:
+      context: ./
+    volumes:
+      - ./www:/usr/local/apache2/htdocs
+      - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    ports:
+      - 8080:80
+    networks:
+      - apache
+
+networks:
+  apache:
+    driver: bridge
